@@ -27,7 +27,7 @@ git config --global user.email "alice@example.com"
 Check settings:
 
 ```bash
-git config --list
+git config --list # Lists all Git configuration settings
 ```
 
 **When to Use**:
@@ -44,7 +44,7 @@ git config --list
 **Usage**:
 
 ```bash
-git init
+git init # Initializes a new Git repository in the current directory
 ```
 
 **Example**:
@@ -93,7 +93,7 @@ cd my-app
 **Usage**:
 
 ```bash
-git status
+git status # Shows the status of changes in the working directory
 ```
 
 **Example**:
@@ -105,7 +105,7 @@ git status
 
 Output:
 
-```yaml
+```
 Changes not staged for commit:
   modified:   index.html
 ```
@@ -193,6 +193,7 @@ git log --oneline          # One-line summary
 git log --graph --oneline --all  # Graphical branch view
 git log --author="Name"    # Commits by a specific author
 git log -n 5               # Last 5 commits
+git log -p                 # See changes in files
 ```
 
 **Example**:
@@ -204,7 +205,7 @@ git log --oneline
 
 Output:
 
-```yaml
+```
 abc1234 Add homepage
 def5678 Fix login bug
 ```
@@ -223,10 +224,12 @@ def5678 Fix login bug
 **Usage**:
 
 ```bash
-git branch                 # List all branches
-git branch <branch-name>   # Create a new branch
-git branch -d <branch-name>  # Delete a merged branch
-git branch -D <branch-name>  # Force delete a branch
+git branch # List all local branches
+git branch -a # List all local and remote brances
+git branch <branch-name> # Create a new branch
+git branch -d <branch-name> # Deletes a local branch (only if merged)
+git branch -D <branch-name> # Force deletes a local branch (even if not merged)
+git push origin --delete <branch-name> # Deletes the specified branch from the remote repository
 ```
 
 **Example**:
@@ -310,7 +313,7 @@ git merge feature-login
 
 ```bash
 git remote -v                     # List remote connections
-git remote add <name> <url>       # Add a new remote
+git remote add <repo-name> <url>       # Add a new remote
 git remote set-url origin <new-url>  # Change remote URL
 ```
 
@@ -340,7 +343,7 @@ git remote -v
 
 ```bash
 git push origin <branch-name>        # Push a branch
-git push -u origin <branch-name>     # Push and set upstream
+git push -u origin <branch-name>     # Push and set upstream (first time)
 git push origin --delete <branch-name>  # Delete a remote branch
 ```
 
@@ -369,7 +372,7 @@ git push -u origin feature-login
 **Usage**:
 
 ```bash
-git pull origin <branch-name>
+git pull origin <branch-name> # Get latest changes from GitHub
 ```
 
 **Example**:
@@ -391,7 +394,7 @@ git pull origin main
 **Usage**:
 
 ```bash
-git fetch origin
+git fetch origin # Get changes but don't merge automatically
 ```
 
 **Example**:
@@ -572,7 +575,7 @@ git push origin v1.0.0
 
 ```bash
 cd my-project
-rm -rf .git
+Remove-Item -Recurse -Force .git
 git init
 echo "Fresh start" > README.md
 git add README.md
@@ -586,10 +589,10 @@ Reset a repository:
 
 ```bash
 cd my-app
-rm -rf .git
+Remove-Item -Recurse -Force .git
 git init
 echo "New project start" > README.md
-git add README.md
+git add README.md # or git add . for multiple files
 git commit -m "Initial commit"
 git remote add origin https://github.com/alice/my-app.git
 git push -u --force origin main
@@ -635,18 +638,18 @@ git help commit
 
 ## Quick Reference
 
-| Task                | Command                              |
-|---------------------|--------------------------------------|
-| Initialize repo     | `git init`                           |
-| Clone repo          | `git clone <url>`                    |
-| Check status        | `git status`                         |
-| Stage changes       | `git add .` or `git add <file>`      |
-| Commit changes      | `git commit -m "message"`            |
-| View history        | `git log --oneline`                  |
-| Create branch       | `git checkout -b <branch-name>`      |
-| Merge branch        | `git merge <branch-name>`            |
-| Push to remote      | `git push origin <branch-name>`      |
-| Pull from remote    | `git pull origin <branch-name>`      |
-| Undo changes        | `git checkout -- <file>` or `git reset` |
-| Stash changes       | `git stash` and `git stash pop`      |
-| View differences    | `git diff`                           |
+| Task             | Command                                 |
+| ---------------- | --------------------------------------- |
+| Initialize repo  | `git init`                              |
+| Clone repo       | `git clone <url>`                       |
+| Check status     | `git status`                            |
+| Stage changes    | `git add .` or `git add <file>`         |
+| Commit changes   | `git commit -m "message"`               |
+| View history     | `git log --oneline`                     |
+| Create branch    | `git checkout -b <branch-name>`         |
+| Merge branch     | `git merge <branch-name>`               |
+| Push to remote   | `git push origin <branch-name>`         |
+| Pull from remote | `git pull origin <branch-name>`         |
+| Undo changes     | `git checkout -- <file>` or `git reset` |
+| Stash changes    | `git stash` and `git stash pop`         |
+| View differences | `git diff`                              |
